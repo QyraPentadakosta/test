@@ -5,6 +5,7 @@ import '../../../core/extensions/context_extensions.dart';
 import '../../../core/routes/routes.dart';
 import '../../add_remove_interest/view/add_remove_interest_view.dart';
 import '../bloc/bloc.dart';
+import '../bloc/event.dart';
 import '../bloc/state.dart';
 
 class Interest extends StatelessWidget {
@@ -12,7 +13,7 @@ class Interest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    var bloc = BlocProvider.of<HomeBloc>(context);
     return Container(
       width: context.mQWidth(1),
       constraints: const BoxConstraints(
@@ -49,7 +50,7 @@ class Interest extends StatelessWidget {
                           arguments: {
                             'data': state.profile.listInterest,
                           },
-                        );
+                        ).then((value) => {bloc.add(GetDataProfileEvent())});
                       },
                       child: Image.asset(
                         "assets/edit-2.png",
@@ -66,7 +67,7 @@ class Interest extends StatelessWidget {
                         arguments: {
                           'data': [],
                         },
-                      );
+                      ).then((value) => {bloc.add(GetDataProfileEvent())});
                     },
                     child: Image.asset(
                       "assets/edit-2.png",
@@ -78,6 +79,7 @@ class Interest extends StatelessWidget {
               ),
             ],
           ),
+          context.sbHeight(size: context.padding2),
           _bodyEmpty(context),
         ],
       ),

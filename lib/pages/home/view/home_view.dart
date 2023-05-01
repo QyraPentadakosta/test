@@ -35,6 +35,7 @@ class HomeView extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return Scaffold(
+          extendBodyBehindAppBar: true,
           backgroundColor: const Color(0xFF09141A),
           appBar: IAppBar.primary(
             title: state is HomeSuccessState
@@ -54,7 +55,10 @@ class HomeView extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: context.padding2),
                   child: Column(
                     children: [
-                      context.sbHeight(size: context.padding2),
+                      context.sbHeight(
+                        size:
+                            context.iMediaQuery.padding.top + context.padding10,
+                      ),
                       const ProfileImage(),
                       context.sbHeight(size: context.padding3),
                       const About(),

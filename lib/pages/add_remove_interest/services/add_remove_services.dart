@@ -3,6 +3,7 @@ import '../../../domain/repository/interest/InterestRepository.dart';
 class AddRemoveServices {
   Future addRemoveInterest(
       {required int idUser, required List<String> interest}) async {
+    print(idUser);
     await InterestRepository().addInterest(idUser, interest);
   }
 

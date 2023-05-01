@@ -27,7 +27,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       goToNamed(
         event.context,
         routeName: HomeView.routeName,
-        routeType: RouteType.pushReplace,
+        routeType: RouteType.pushRemove,
       );
     }
   }

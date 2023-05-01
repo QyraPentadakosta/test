@@ -25,7 +25,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         goToNamed(
           event.context,
           routeName: HomeView.routeName,
-          routeType: RouteType.pushReplace,
+          routeType: RouteType.pushRemove,
         );
       } else {
         event.context.iShowSnackBar(

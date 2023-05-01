@@ -30,12 +30,15 @@ class AddRemoveInterestViewModel extends ChangeNotifier {
   }
 
   void setDataFormArguments(BuildContext context, List<String> data) {
-    listStringData = data;
+    if (data.isNotEmpty) {
+      listStringData = data;
+    }
     notifyListeners();
   }
 
   Future saveData(BuildContext context, AddListBloc bloc) async {
     String? id = await IStorage.getString(IConstant.idUser) ?? "0";
+    // print(listStringData);
     bloc.add(AddListDataEvent(context,
         idUser: int.tryParse(id) ?? 0, data: listStringData));
   }
